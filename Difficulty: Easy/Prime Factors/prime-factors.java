@@ -29,37 +29,45 @@ class GFG
 
 class Solution
 {
+    public static boolean isPrime(int n)
+        {
+            if(n <= 1) return false;
+            for(int i =2 ; i < n ; i++)
+            {
+                if(n % i == 0) return false;
+            }
+            return true;
+        }
     public int[] AllPrimeFactors(int N)
     {
-        
-        ArrayList<Integer> ans = new ArrayList<>();
-        
-        for(int i = 2 ; i * i <= N ; i++)
+        ArrayList<Integer> temp = new ArrayList <>();
+        for(int i = 1 ; i <= N ; i++)
         {
-            if( N%i == 0)
+            if(N % i == 0)
             {
-                ans.add(i);
-                
-                while(N%i == 0)
-                {
-                    N = N / i;
-                }
-            }
+                boolean is = isPrime(i);
             
+            if(is) 
+            {
+                temp.add(i);
+            }
+            }
         }
         
-    if (N > 1) 
-    {
-        ans.add(N);
-    }
-     int[] result = new int[ans.size()];
-     
-     for (int i = 0; i < ans.size(); i++) 
-     {
-        result[i] = ans.get(i);
-     }
-    
-    return result;
+        if (temp == null || temp.isEmpty()) 
+         {  
+            return new int[0]; 
+        }
+        int size = temp.size();
+        int ans[] = new int[size];
         
+        for(int i = 0 ; i < size ; i++)
+        {
+            ans[i] = temp.get(i);
+        }
+        
+        Arrays.sort(ans);
+        
+        return ans;
     }
 }
