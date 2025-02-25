@@ -37,31 +37,22 @@ class Geeks {
 
 class Solution {
     static ArrayList<Integer> leaders(int arr[]) {
-        
-        ArrayList<Integer> ans = new ArrayList<>();
-        int n = arr.length;
-        
-        
-        
-        // if( n == 2 ) 
-        // {
-        //     ans.add(arr[n-1]);
-        //     return ans;
-        // }
-        
-        int max = arr[n - 1];
-        ans.add(max);
-        for(int i = n - 2 ; i >= 0 ; i-- )
+     
+     ArrayList<Integer> ans = new ArrayList<>();
+     int n = arr.length  ;
+     
+     
+     ans.add(arr[n - 1]);
+     int max = arr[n - 1];
+     for(int i = n-2 ; i >= 0 ; i--)
+     {
+        if(arr[i] >= max)
         {
-            if(arr[i] >= max)
-            {
-                ans.add(arr[i]);
-                max = arr[i];
-            }
+            ans.add(arr[i]);
+            max = arr[i];
         }
-        
-        Collections.reverse(ans);
-
-        return ans;
+     }
+     Collections.sort(ans,Collections.reverseOrder());
+     return ans;
     }
 }
